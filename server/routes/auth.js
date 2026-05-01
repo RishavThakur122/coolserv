@@ -40,6 +40,19 @@ router.post('/register', [
     res.status(500).json({ message: err.message });
   }
 });
+// TEMP: seed route — remove after use
+router.post('/seed', async (req, res) => {
+  if (req.body.secret !== 'tapnext_seed_2024') {
+    return res.status(403).json({ message: 'Forbidden' });
+  }
+  try {
+    // paste seed.js logic here or just require it
+    require('../seed');
+    res.json({ message: 'Seeding started, check logs' });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
 // POST /api/auth/login
 router.post('/login', [
   body('email').isEmail().normalizeEmail(),
