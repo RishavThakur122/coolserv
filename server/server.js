@@ -65,3 +65,9 @@ async function connectAndStart() {
 connectAndStart();
 
 module.exports = app;
+// Keep Render free tier awake
+if (process.env.NODE_ENV === 'production') {
+  setInterval(() => {
+    require('https').get(process.env.RENDER_URL || '');
+  }, 14 * 60 * 1000);
+}
