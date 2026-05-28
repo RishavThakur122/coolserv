@@ -1,0 +1,54 @@
+services:
+  # Backend API
+  - type: web
+    name: coolserv-api
+    runtime: node
+    rootDir: server
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+
+  # Python Intelligence Bot
+  - type: worker
+    name: coolserv-bot
+    runtime: python
+    rootDir: bot
+    buildCommand: pip install -r requirements.txt
+    startCommand: python bot.py
+    envVars:
+      - key: MONGO_URI
+        sync: false
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: TELEGRAM_CHAT_ID
+        sync: false
+      - key: SMTP_HOST
+        value: smtp.gmail.com
+      - key: SMTP_PORT
+        value: "587"
+      - key: SMTP_USER
+        sync: false
+      - key: SMTP_PASS
+        sync: false
+      - key: ADMIN_EMAIL
+        sync: false
+      - key: NODE_API_URL
+        sync: false
+      - key: OVERDUE_THRESHOLD_HOURS
+        value: "2"
+      - key: SERVICE_REMINDER_DAYS
+        value: "90"
+      - key: FULL_SERVICE_REMINDER_DAYS
+        value: "365"
+      - key: OVERDUE_CHECK_INTERVAL_MINUTES
+        value: "30"
+      - key: DAILY_DIGEST_TIME
+        value: "08:00"
+      - key: WEEKLY_DIGEST_DAY
+        value: "monday"
+      - key: WEEKLY_DIGEST_TIME
+        value: "09:00"
+      - key: LOG_LEVEL
+        value: "INFO"
