@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import AppLayout from './components/layout/AppLayout';
-
+import Payment from './pages/customer/Payment';
 import Login from './pages/auth/Login';
 import Register from './pages/auth/Register';
 import CustomerDashboard from './pages/customer/Dashboard';
@@ -52,6 +52,11 @@ function AppRoutes() {
       <Route path="/admin/analytics" element={<PrivateRoute roles={['admin']}><AppLayout><Analytics /></AppLayout></PrivateRoute>} />
       <Route path="/technician" element={<PrivateRoute roles={['technician']}><AppLayout><TechnicianDashboard /></AppLayout></PrivateRoute>} />
       <Route path="/technician/job/:id" element={<PrivateRoute roles={['technician']}><AppLayout><JobDetail /></AppLayout></PrivateRoute>} />
+      <Route path="/bookings/:id/pay" element={
+  <PrivateRoute roles={['customer']}>
+    <AppLayout><Payment /></AppLayout>
+  </PrivateRoute>
+} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );

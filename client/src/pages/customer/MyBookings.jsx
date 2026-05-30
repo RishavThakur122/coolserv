@@ -133,9 +133,12 @@ const handleApprove = async (bookingId) => {
   <button onClick={() => setCancelModal(b)}
     className="text-xs text-red-400 hover:text-red-300 mt-2 block">Cancel</button>
 )}
-                  {b.status === 'Completed' && b.paymentStatus !== 'Paid' && (
-                    <Link to={`/bookings/${b._id}/pay`} className="text-xs text-cyan-400 hover:text-cyan-300 mt-1 block">Pay now</Link>
-                  )}
+                 {b.status === 'Completed' && b.paymentStatus !== 'Paid' && (
+  <Link to={`/bookings/${b._id}/pay`} 
+    className="text-xs text-cyan-400 hover:text-cyan-300 mt-1 block font-semibold">
+    💳 Pay now
+  </Link>
+)}
                 </div>
               </div>
             </div>
