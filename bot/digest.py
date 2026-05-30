@@ -16,8 +16,8 @@ from pathlib import Path
 from jinja2 import Environment, BaseLoader
 from dotenv import load_dotenv
 
-from db import get_db, get_bookings_range, get_completed_bookings_range, get_all_technicians
-from analytics import generate_analytics_chart
+from bot.db import get_db, get_bookings_range, get_completed_bookings_range, get_all_technicians
+from bot.analytics import generate_analytics_chart
 
 load_dotenv()
 logger = logging.getLogger(__name__)

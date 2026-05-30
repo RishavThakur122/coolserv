@@ -48,7 +48,7 @@ signal.signal(signal.SIGTERM, _handle_signal)
 # ── Job wrappers (with error isolation) ──────────────────────────────────────
 def run_overdue_check():
     try:
-        from monitor import check_overdue_bookings
+        from bot.monitor import check_overdue_bookings
         check_overdue_bookings()
     except Exception as e:
         logger.error(f'[overdue_check] Unexpected error: {e}', exc_info=True)
@@ -56,7 +56,7 @@ def run_overdue_check():
 
 def run_daily_digest():
     try:
-        from digest import send_daily_digest
+        from bot.digest import send_daily_digest
         send_daily_digest()
     except Exception as e:
         logger.error(f'[daily_digest] Unexpected error: {e}', exc_info=True)
@@ -64,7 +64,7 @@ def run_daily_digest():
 
 def run_weekly_digest():
     try:
-        from digest import send_weekly_digest
+        from bot.digest import send_weekly_digest
         send_weekly_digest()
     except Exception as e:
         logger.error(f'[weekly_digest] Unexpected error: {e}', exc_info=True)
@@ -72,7 +72,7 @@ def run_weekly_digest():
 
 def run_maintenance_reminders():
     try:
-        from reminder import send_maintenance_reminders
+        from bot.reminder import send_maintenance_reminders
         send_maintenance_reminders()
     except Exception as e:
         logger.error(f'[reminders] Unexpected error: {e}', exc_info=True)
@@ -81,7 +81,7 @@ def run_maintenance_reminders():
 # ── Database connectivity check ───────────────────────────────────────────────
 def check_db_connection() -> bool:
     try:
-        from db import get_db
+        from bot.db import get_db
         db = get_db()
         db.list_collection_names()
         return True

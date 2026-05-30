@@ -12,7 +12,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
 from dotenv import load_dotenv
-from db import get_db, get_units_due_service, log_reminder, was_reminder_sent_recently
+from bot.db import get_db, get_units_due_service, log_reminder, was_reminder_sent_recently
 
 load_dotenv()
 logger = logging.getLogger(__name__)

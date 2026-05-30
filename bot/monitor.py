@@ -12,7 +12,7 @@ from datetime import datetime, timedelta
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
-from db import get_db, get_overdue_bookings
+from bot.db import get_db, get_overdue_bookings
 from dotenv import load_dotenv
 
 load_dotenv()

@@ -20,7 +20,7 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 from matplotlib.gridspec import GridSpec
 
-from db import get_db, get_bookings_range
+from bot.db import get_db, get_bookings_range
 from dotenv import load_dotenv
 
 load_dotenv()
